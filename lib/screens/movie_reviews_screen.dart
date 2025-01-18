@@ -5,7 +5,7 @@ import 'add_edit_review_screen.dart';
 class MovieReviewsScreen extends StatefulWidget {
   final String username;
 
-  const MovieReviewsScreen({Key? key, required this.username}) : super(key: key);
+  const MovieReviewsScreen({super.key, required this.username});
 
   @override
   _MovieReviewsScreenState createState() => _MovieReviewsScreenState();
@@ -34,7 +34,7 @@ class _MovieReviewsScreenState extends State<MovieReviewsScreen> {
       _loadReviews();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Gagal menghapus review')),
+        const SnackBar(content: Text('Gagal menghapus review')),
       );
     }
   }
@@ -43,10 +43,10 @@ class _MovieReviewsScreenState extends State<MovieReviewsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Review Film Saya'),
+        title: const Text('Review Film Saya'),
         actions: [
           IconButton(
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
             onPressed: () async {
               final result = await Navigator.push(
                 context,
@@ -60,7 +60,7 @@ class _MovieReviewsScreenState extends State<MovieReviewsScreen> {
         ],
       ),
       body: _reviews.isEmpty
-          ? Center(child: Text('Belum ada review. Tambahkan sekarang!'))
+          ? const Center(child: Text('Belum ada review. Tambahkan sekarang!'))
           : ListView.builder(
               itemCount: _reviews.length,
               itemBuilder: (context, index) {
@@ -73,7 +73,7 @@ class _MovieReviewsScreenState extends State<MovieReviewsScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
-                        icon: Icon(Icons.edit),
+                        icon: const Icon(Icons.edit),
                         onPressed: () async {
                           final result = await Navigator.push(
                             context,
@@ -88,7 +88,7 @@ class _MovieReviewsScreenState extends State<MovieReviewsScreen> {
                         },
                       ),
                       IconButton(
-                        icon: Icon(Icons.delete),
+                        icon: const Icon(Icons.delete),
                         onPressed: () => _deleteReview(review['_id']),
                       ),
                     ],
